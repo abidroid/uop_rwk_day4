@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:uop_rwk_day4/screens/country_detail_screen.dart';
 
 import '../model/country.dart';
 import 'package:http/http.dart' as http;
@@ -72,19 +73,30 @@ class _CountryListScreenState extends State<CountryListScreen> {
 
                       Country country = countries[index];
 
-                      return Card(
-                        color: Colors.amber[100],
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Row(
-                            spacing: 20,
-                            children: [
-                              SizedBox(
-                                  width: 100,
-                                  height: 80,
-                                  child: SvgPicture.network(country.flag!)),
-                              Expanded(child: Text(country.name ?? '', style: TextStyle(fontSize: 20,),)),
-                            ],
+                      return InkWell(
+                        onTap: (){
+
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                            return CountryDetailScreen(country: country);
+                          }));
+                        },
+                        child: Card(
+
+                          color: Colors.amber[100],
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Row(
+                              spacing: 20,
+                              children: [
+                                SizedBox(
+                                    width: 100,
+                                    height: 80,
+                                    child: Hero(
+                                        tag: country.name!,
+                                        child: SvgPicture.network(country.flag!))),
+                                Expanded(child: Text(country.name ?? '', style: TextStyle(fontSize: 20,),)),
+                              ],
+                            ),
                           ),
                         ),
                       );
