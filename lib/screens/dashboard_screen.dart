@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:uop_rwk_day4/screens/add_student_screen.dart';
 import 'package:uop_rwk_day4/screens/country_list_screen.dart';
+import 'package:uop_rwk_day4/screens/product/product_list_screen.dart';
 import 'package:uop_rwk_day4/screens/sp_screen.dart';
 import 'package:uop_rwk_day4/screens/student_list_screen.dart';
 import 'package:uop_rwk_day4/screens/update_student_screen.dart';
@@ -116,6 +117,20 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
 
                 }, child: const Text("Countries")),
+
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.pink,
+                    foregroundColor: Colors.white
+                ),
+                onPressed: (){
+
+                  Navigator.of(context).push(MaterialPageRoute(builder: (context){
+                    return  ProductListScreen();
+                  }));
+
+
+                }, child: const Text("Products")),
           ],
         ),
       ),
