@@ -10,6 +10,10 @@ class SpScreen extends StatefulWidget {
 }
 
 class _SpScreenState extends State<SpScreen> {
+
+  // initial state
+  int counter = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,7 +23,12 @@ class _SpScreenState extends State<SpScreen> {
       ),
       body: Column(
         children: [
-
+          Text(counter.toString()),
+          ElevatedButton(onPressed: (){
+            setState(() {
+              counter++;
+            });
+          }, child: const Text('Increment'))
         ],
       ),
     );  }
